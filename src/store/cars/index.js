@@ -17,9 +17,15 @@ const INITIAL_STATE = [
 ]
 
 export default function reducer(state = INITIAL_STATE, action){
-        if(action === 'ADD_CAR'){
-            return [...state, action.car];
+        if(action.type === 'ADD_CAR'){
+			return [...state, action.car];
         }
         return state
 }
 
+export const addCar = car => {
+	return {
+		type: 'ADD_CAR', 
+		car
+	}
+}
