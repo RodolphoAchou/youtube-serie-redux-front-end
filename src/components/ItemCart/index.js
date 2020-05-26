@@ -8,7 +8,7 @@ export default function ItemCart({ item, removeItemCard }){
                 <div className="card-body" style={{padding: '0'}}>
                     <img src={item.url} alt={item.name} style={{width: '100%'}}/>
                 </div>
-                <button onClick={() => removeItemCard(item._id)}className= "btn btn-danger" style={{width: 50, position: 'absolute', bottom: 15, right: 15}}>
+                <button onClick={() => removeItemCard(item)}className= "btn btn-danger" style={{width: 50, position: 'absolute', bottom: 15, right: 15}}>
                     <i className="fa fa-trash fa-2x"></i>
                 </button>
             </div>
