@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux'
 
 import { showMessage, hideMessage } from '../../store/ducks/layout'
-import { addCarFetch } from '../../store/fetchActions'
+import { addCarFetch } from '../../store/FetchActions'
 
 
 export default function Add() {

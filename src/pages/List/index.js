@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Car from '../../components/Car';
-import { getAllCars } from '../../store/fetchActions'
+import { getAllCars } from '../../store/FetchActions'
 
 export default function List() {
 
