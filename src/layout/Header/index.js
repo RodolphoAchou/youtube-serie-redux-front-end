@@ -30,6 +30,10 @@ export default function Header() {
 				</ul>
 			</div>
 			<ul className="navbar-nav ml-md-auto">
+				<NavLink to="/login" activeClassName="active" className="nav-item mt-2 mr-3">
+					<i className="fa fa-user fa-2x" aria-hidden="true">
+					</i>
+				</NavLink>
 				<NavLink to="/cart" activeClassName="active" className="nav-item">
 					<i className="fa fa-shopping-cart fa-3x" aria-hidden="true">
 						<span className="fa-counter">{length}</span>
