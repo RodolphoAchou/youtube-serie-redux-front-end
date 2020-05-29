@@ -1,13 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { useSelector } from 'react-redux';
+import logoutService from '../../services/logout.service'
 
 import './styles.css';
 
 export default function Header() {
 
 	const length = useSelector(state => state.cart.length)
+	const { isAuthenticated } = useSelector(state => state.auth)
+	const dispatch = useDispatch()
+
+	function authLogoutButton(){
+		isAuthenticated && dispatch(logoutService())
+	}
 
 	return (
 		<nav className="l-header navbar navbar-expand-lg navbar-dark bg-primary">
@@ -23,14 +30,16 @@ export default function Header() {
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink to="/add" activeClassName="active" className="nav-link">
-							Adicionar
-						</NavLink>
+						{isAuthenticated && (
+							<NavLink to="/add" activeClassName="active" className="nav-link">
+								Adicionar
+							</NavLink>
+						)}
 					</li>
 				</ul>
 			</div>
 			<ul className="navbar-nav ml-md-auto">
-				<NavLink to="/login" activeClassName="active" className="nav-item mt-2 mr-3">
+				<NavLink to="/login" activeClassName="active" onClick={authLogoutButton}className="nav-item mt-2 mr-3">
 					<i className="fa fa-user fa-2x" aria-hidden="true">
 					</i>
 				</NavLink>

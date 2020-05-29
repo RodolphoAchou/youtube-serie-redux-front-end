@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { authLogin } from '../../store/FetchActions'
 
 export default function Login(){
+    const [form, setForm] = useState({ username: '', password: ''})
 
-    const [form, setForm] = useState({ userName: '', password: ''})
+    const dispatch = useDispatch();
 
     function changeForm(e){
         const {name, value} = e.target;
 
-        setForm({... form, [name] : value })
+        setForm({ ...form, [name]: value })
     }
 
     function submitForm(e){
         e.preventDefault()
-        console.log(form)
+
+        dispatch(authLogin(form))
+
+        setForm({ username: '', password: ''})
     }
 
     return (
@@ -22,7 +28,7 @@ export default function Login(){
         }}>
             <h2 className="text-center">SC-Login</h2>
             <div className="form-group">
-                <input placeholder="Usuário" onChange={changeForm} name= "username" className="form-control" value={form.name}/>
+                <input placeholder="Usuário" onChange={changeForm} name= "username" className="form-control" value={form.username}/>
             </div>
             <div className="form-group">
                 <input placeholder="Senha" onChange={changeForm} name= "password" className="form-control" type="password" value={form.password}/>
